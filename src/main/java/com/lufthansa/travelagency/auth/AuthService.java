@@ -88,9 +88,9 @@ public class AuthService {
                         roles.add(adminRole);
                         break;
                     case "ROLE_USER":
-                        Role modRole = roleRepository.findByName(ERoleType.ROLE_USER)
+                        Role userRole = roleRepository.findByName(ERoleType.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
+                        roles.add(userRole);
                         break;
                     default:
                         throw new RuntimeException("Role not known");

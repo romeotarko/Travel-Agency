@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.lufthansa.travelagency.flight.Flight;
+import com.lufthansa.travelagency.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -52,6 +54,10 @@ public class Trip {
 
     @Enumerated(EnumType.STRING)
     private ETripReason trip_reason;
+
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date date_created;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_id", referencedColumnName = "id")

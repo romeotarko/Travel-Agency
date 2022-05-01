@@ -14,6 +14,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -45,6 +46,10 @@ public class Flight {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrival_date;
+
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date date_created;
 
     @OneToOne(mappedBy = "flight")
     @JsonIgnore

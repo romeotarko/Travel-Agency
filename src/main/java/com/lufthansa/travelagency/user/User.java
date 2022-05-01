@@ -1,7 +1,9 @@
 package com.lufthansa.travelagency.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lufthansa.travelagency.flight.Flight;
 import com.lufthansa.travelagency.role.Role;
+import com.lufthansa.travelagency.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,6 +51,18 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_trips",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id"))
+    private Set<Trip> trips=new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_flights",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id"))
+    private Set<Flight> flights=new HashSet<>();
 
     public User(String username, String email, String password) {
         this.username = username;
