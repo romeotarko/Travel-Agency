@@ -35,7 +35,8 @@ class TripServiceTest {
                 "Prague",
                 LocalDate.now(),
                 LocalDate.now().plusDays(1),
-                ETripReason.EVENT);
+                ETripReason.EVENT,
+                "testUser");
 
         tripService.create(tripDto);
 
@@ -55,7 +56,8 @@ class TripServiceTest {
                 "Prague",
                 LocalDate.now(),
                 LocalDate.now().minusDays(1),
-                ETripReason.EVENT);
+                ETripReason.EVENT,
+                "testUser");
 
         TripAgencyApplicationException exception = assertThrows(TripAgencyApplicationException.class, () -> {
             tripService.create(tripDto);
@@ -74,7 +76,8 @@ class TripServiceTest {
                 "Tirona",
                 LocalDate.now(),
                 LocalDate.now().plusDays(1),
-                ETripReason.EVENT);
+                ETripReason.EVENT,
+                "testUser");
 
         TripAgencyApplicationException exception = assertThrows(TripAgencyApplicationException.class, () -> {
             tripService.create(tripDto);
@@ -93,7 +96,8 @@ class TripServiceTest {
                 "Prauge",
                 LocalDate.now(),
                 LocalDate.now().plusDays(1),
-                ETripReason.EVENT);
+                ETripReason.EVENT,
+                "testUser");
 
         Trip existingTrip = tripRepository.saveAndFlush(tripDto.convertToEntity());
 
@@ -103,7 +107,8 @@ class TripServiceTest {
                 "Roma",
                 LocalDate.now(),
                 LocalDate.now().plusDays(1),
-                ETripReason.EVENT);
+                ETripReason.EVENT,
+                "testUser");
 
         Trip updatedTrip = tripService.update(existingTrip.getId(), toUpdateDto);
 

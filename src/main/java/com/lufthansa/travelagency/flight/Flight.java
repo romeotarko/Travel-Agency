@@ -47,6 +47,9 @@ public class Flight {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrival_date;
 
+    @Size(max = 50)
+    private String created_by;
+
     @Basic
     @Temporal(TemporalType.DATE)
     private Date date_created;

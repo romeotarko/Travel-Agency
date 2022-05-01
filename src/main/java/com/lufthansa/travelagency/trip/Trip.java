@@ -55,6 +55,9 @@ public class Trip {
     @Enumerated(EnumType.STRING)
     private ETripReason trip_reason;
 
+    @Size(max = 50)
+    private String created_by;
+
     @Basic
     @Temporal(TemporalType.DATE)
     private Date date_created;

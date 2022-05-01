@@ -40,6 +40,10 @@ public class FlightDto {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate arrival_date;
 
+    @NotBlank
+    @Size(max = 50)
+    public String created_by;
+
     public Flight convertToEntity() {
         Flight flight = new Flight();
         flight.setFlight_number(getFlight_number());
@@ -47,6 +51,7 @@ public class FlightDto {
         flight.setArrival_place(getArrival_place());
         flight.setDeparture_date(getDeparture_date());
         flight.setArrival_date(getArrival_date());
+        flight.setCreated_by(getCreated_by());
 
         return flight;
     }

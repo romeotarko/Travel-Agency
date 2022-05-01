@@ -27,10 +27,10 @@ class FlightServiceTest {
         FlightDto flightDto = new FlightDto(
                 23423L,
                 "Rimini",
-
                 "Tirana",
                 LocalDate.now(),
-                LocalDate.now().plusDays(1)
+                LocalDate.now().plusDays(1),
+                "testAdmin"
         );
 
         flightService.create(flightDto);
@@ -52,7 +52,8 @@ class FlightServiceTest {
                 "Rimini",
                 "Tirana",
                 LocalDate.now(),
-                LocalDate.now().plusDays(1)
+                LocalDate.now().plusDays(1),
+                "testAdmin"
         );
 
         TripAgencyApplicationException exception = assertThrows(TripAgencyApplicationException.class, () -> {
@@ -71,7 +72,8 @@ class FlightServiceTest {
                 "Tirona",
                 "Prauge",
                 LocalDate.now(),
-                LocalDate.now().plusDays(1));
+                LocalDate.now().plusDays(1),
+                "testAdmin");
 
         Flight existingFlight = flightRepository.saveAndFlush(flightDto.convertToEntity());
 
@@ -80,7 +82,8 @@ class FlightServiceTest {
                 "Tirona",
                 "Roma",
                 LocalDate.now(),
-                LocalDate.now().plusDays(1));
+                LocalDate.now().plusDays(1),
+                "testAdmin");
 
         Flight updatedFlight = flightService.update(existingFlight.getId(), toUpdateDto);
 
@@ -98,7 +101,9 @@ class FlightServiceTest {
                 "Tirona",
                 "Prauge",
                 LocalDate.now().plusDays(1),
-                LocalDate.now());
+                LocalDate.now(),
+                "testAdmin");
+
 
         TripAgencyApplicationException exception = assertThrows(TripAgencyApplicationException.class, () -> {
             flightService.create(flightDto);
@@ -117,7 +122,8 @@ class FlightServiceTest {
                 "Prauge",
                 "Prauge",
                 LocalDate.now(),
-                LocalDate.now().plusDays(1));
+                LocalDate.now().plusDays(1),
+                "testAdmin");
 
         TripAgencyApplicationException exception = assertThrows(TripAgencyApplicationException.class, () -> {
             flightService.create(flightDto);

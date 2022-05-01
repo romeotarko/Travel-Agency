@@ -52,6 +52,9 @@ public class TripDto {
     @Enumerated(EnumType.STRING)
     private ETripReason trip_reason;
 
+    @Size(max = 50)
+    private String created_by;
+
 
     public Trip convertToEntity() {
         Trip trip = new Trip();
@@ -62,6 +65,7 @@ public class TripDto {
         trip.setArrival_date(getArrival_date());
         trip.setTrip_reason(getTrip_reason());
         trip.setTrip_status(CREATED);
+        trip.setCreated_by(getCreated_by());
         return trip;
     }
 
